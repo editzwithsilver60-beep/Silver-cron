@@ -3923,7 +3923,7 @@ if (command === "vv" && canUseBot) {
 
     return;
   }
-        
+        } 
         if (option === "off") {
   const index = nightModeGroups.indexOf(message.key.remoteJid);
 
