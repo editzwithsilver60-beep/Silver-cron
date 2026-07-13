@@ -1663,7 +1663,23 @@ _Powered by The Idle Developer_ 🚀`,
 ╰━━━━━━━━━━━━━━━━━━━━━━╯`
 });
 
-await sock.groupSettingUpdate(groupId, "announcement");
+await sock.groupSettingUpdate(groupId, "not_announcement");
+
+await sock.sendMessage(groupId, {
+  text: `╭━━━〔 ☀️ GOOD MORNING 〕━━━╮
+
+🌞 *Rise and shine!*
+
+📢 This group is now OPEN.
+
+✅ Everyone can send messages again.
+
+💙 Wishing you all a productive and amazing day!
+
+🤖 *Automated by _Silver_*
+
+╰━━━━━━━━━━━━━━━━━━━━━━╯`
+});
         logger.info({ groupId }, "Night Mode: Group closed");
       } catch (err) {
         logger.error({ groupId, error: err.message }, "Night Mode close failed");
