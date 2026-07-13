@@ -144,6 +144,11 @@ const loadData = () => {
         sudoUsers.length = 0;
         sudoUsers.push(...data.sudoUsers);
       }
+      // Load Night Mode groups
+if (data.nightModeGroups && Array.isArray(data.nightModeGroups)) {
+  nightModeGroups.length = 0;
+  nightModeGroups.push(...data.nightModeGroups);
+}
 
       // Load WCG stats
       if (data.wcgStats) {
