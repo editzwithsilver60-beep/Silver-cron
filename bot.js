@@ -212,6 +212,7 @@ const saveData = () => {
       adminSettings,
       userWarns,
       sudoUsers,
+      nightModeGroups,
       wcgStats,
       afkUsers,
       antiMentionGroups,
