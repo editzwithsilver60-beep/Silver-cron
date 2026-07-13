@@ -3901,6 +3901,29 @@ if (command === "vv" && canUseBot) {
           }
           return;
         }
+        if (command === "nightmode") {
+  if (!ownerIsAdmin) {
+    await sock.sendMessage(message.key.remoteJid, {
+      text: "❌ Bot needs admin.",
+    });
+    return;
+  }
+
+  const option = args[0]?.toLowerCase();
+
+  if (option === "on") {
+    if (!nightModeGroups.includes(message.key.remoteJid)) {
+      nightModeGroups.push(message.key.remoteJid);
+      saveData();
+    }
+
+    await sock.sendMessage(message.key.remoteJid, {
+      text: "🌙 Night Mode enabled for this group.",
+    });
+
+    return;
+  }
+        }
 
         if (command === "getpp") {
           let targetJid = null;
