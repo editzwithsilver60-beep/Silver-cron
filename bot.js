@@ -1636,6 +1636,25 @@ _Powered by The Idle Developer_ 🚀`,
       console.log(`Working Dir: ${process.cwd()}`);
       console.log(`Bot Mode: ${botMode.toUpperCase()}\n`);
       logger.info({ owner: BOT_OWNER, userJid: sock.user.id }, 'Bot connected and running');
+      if (!nightCronStarted) {
+  nightCronStarted = true;
+
+  logger.info("🌙 Night Mode scheduler started.");
+
+  // TEST: runs every minute
+  cron.schedule("* * * * *", async () => {
+    logger.info("🌙 Night Mode test cron triggered.");
+
+    for (const groupId of nightModeGroups) {
+      try {
+        await sock.groupSettingUpdate(groupId, "announcement");
+        logger.info({ groupId }, "Night Mode: Group closed");
+      } catch (err) {
+        logger.error({ groupId, error: err.message }, "Night Mode close failed");
+      }
+    }
+  });
+      }
 
       const myJid = sock.user.id;
       try {
