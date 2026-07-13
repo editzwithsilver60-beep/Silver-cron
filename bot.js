@@ -3924,6 +3924,20 @@ if (command === "vv" && canUseBot) {
     return;
   }
         }
+        if (option === "off") {
+  const index = nightModeGroups.indexOf(message.key.remoteJid);
+
+  if (index !== -1) {
+    nightModeGroups.splice(index, 1);
+    saveData();
+  }
+
+  await sock.sendMessage(message.key.remoteJid, {
+    text: "☀️ Night Mode disabled for this group.",
+  });
+
+  return;
+        }
 
         if (command === "getpp") {
           let targetJid = null;
