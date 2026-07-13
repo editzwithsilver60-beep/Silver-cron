@@ -1647,7 +1647,23 @@ _Powered by The Idle Developer_ 🚀`,
 
     for (const groupId of nightModeGroups) {
       try {
-        await sock.groupSettingUpdate(groupId, "announcement");
+        await sock.sendMessage(groupId, {
+  text: `╭━━━〔 🌙 NIGHT MODE 〕━━━╮
+
+⚠️ *Good night everyone!*
+
+🔒 This group has been automatically closed.
+
+👮 Only admins can send messages for now.
+
+😴 Have a peaceful night and see you tomorrow.
+
+🤖 *Automated by _Silver_*
+
+╰━━━━━━━━━━━━━━━━━━━━━━╯`
+});
+
+await sock.groupSettingUpdate(groupId, "announcement");
         logger.info({ groupId }, "Night Mode: Group closed");
       } catch (err) {
         logger.error({ groupId, error: err.message }, "Night Mode close failed");
