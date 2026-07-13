@@ -1641,14 +1641,15 @@ _Powered by The Idle Developer_ 🚀`,
 
   logger.info("🌙 Night Mode scheduler started.");
 
-  // TEST: runs every minute
+  // TEST: Runs every minute
   cron.schedule("* * * * *", async () => {
     logger.info("🌙 Night Mode test cron triggered.");
 
     for (const groupId of nightModeGroups) {
       try {
+        // Send the Night Mode announcement
         await sock.sendMessage(groupId, {
-  text: `╭━━━〔 🌙 NIGHT MODE 〕━━━╮
+          text: `╭━━━〔 🌙 NIGHT MODE 〕━━━╮
 
 ⚠️ *Good night everyone!*
 
@@ -1658,18 +1659,25 @@ _Powered by The Idle Developer_ 🚀`,
 
 😴 Have a peaceful night and see you tomorrow.
 
-🤖 *Automated by _Silver_*
+🤖 *Automated by SILVER BOT*
 
 ╰━━━━━━━━━━━━━━━━━━━━━━╯`
-});
+        });
+
+        // Close the group
+        await sock.groupSettingUpdate(groupId, "announcement");
 
         logger.info({ groupId }, "Night Mode: Group closed");
       } catch (err) {
-        logger.error({ groupId, error: err.message }, "Night Mode close failed");
+        logger.error(
+          { groupId, error: err.message },
+          "Night Mode close failed"
+        );
       }
     }
   });
-      }
+
+}
 
       const myJid = sock.user.id;
       try {
