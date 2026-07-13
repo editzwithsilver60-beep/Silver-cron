@@ -3923,21 +3923,28 @@ if (command === "vv" && canUseBot) {
 
     return;
   }
-        } 
-        if (option === "off") {
-  const index = nightModeGroups.indexOf(message.key.remoteJid);
 
-  if (index !== -1) {
-    nightModeGroups.splice(index, 1);
-    saveData();
+  if (option === "off") {
+    const index = nightModeGroups.indexOf(message.key.remoteJid);
+
+    if (index !== -1) {
+      nightModeGroups.splice(index, 1);
+      saveData();
+    }
+
+    await sock.sendMessage(message.key.remoteJid, {
+      text: "☀️ Night Mode disabled for this group.",
+    });
+
+    return;
   }
 
   await sock.sendMessage(message.key.remoteJid, {
-    text: "☀️ Night Mode disabled for this group.",
+    text: "Usage:\n.nightmode on\n.nightmode off",
   });
 
   return;
-        }
+}
 
         if (command === "getpp") {
           let targetJid = null;
