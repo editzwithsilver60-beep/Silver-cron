@@ -32,7 +32,7 @@ const lockedGroups = new Set();
 const userWarns = {};
 let BOT_OWNER = null; // Will be auto-detected from pairing
 const sudoUsers = []; // Users who can use the bot like owner
-
+let nightModeGroups = [];
 let botMode = "private";
 
 // Bot start time for uptime tracking
