@@ -5,6 +5,8 @@
   Presence,
   downloadMediaMessage,
   downloadContentFromMessage,
+  fetchLatestBaileysVersion,
+  Browsers,
 } = require("@whiskeysockets/baileys");
 
 const pino = require("pino");
