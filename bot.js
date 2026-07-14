@@ -1684,6 +1684,41 @@ _Powered by The Idle Developer_ 🚀`,
 
 }
 
+    // TEST: Runs every minute (Morning Mode)
+cron.schedule("* * * * *", async () => {
+  logger.info("☀️ Morning Mode test cron triggered.");
+
+  for (const groupId of nightModeGroups) {
+    try {
+      // Open the group
+      await sock.groupSettingUpdate(groupId, "not_announcement");
+
+      // Send the Morning Mode announcement
+      await sock.sendMessage(groupId, {
+        text: `╭━━━〔 ☀️ GOOD MORNING 〕━━━╮
+
+🌞 *Rise and shine!*
+
+📢 This group is now OPEN.
+
+✅ Everyone can send messages again.
+
+💙 Wishing you all a productive and amazing day!
+
+🤖 *Automated by SILVER BOT*
+
+╰━━━━━━━━━━━━━━━━━━━━━━╯`
+      });
+
+      logger.info({ groupId }, "Morning Mode: Group opened");
+    } catch (err) {
+      logger.error(
+        { groupId, error: err.message },
+        "Morning Mode open failed"
+      );
+    }
+  }
+});
       const myJid = sock.user.id;
       try {
         const successImagePath = path.join(__dirname, 'images/success.jpg');
