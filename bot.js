@@ -1572,6 +1572,8 @@ async function startBot() {
     }
   });
 
+  const { version } = await fetchLatestBaileysVersion();
+  
   const sock = makeWASocket({
     auth: state,
     logger: require("pino")({ level: "silent" }), // Explicitly silent inline
