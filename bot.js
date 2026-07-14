@@ -1647,17 +1647,13 @@ _Powered by The Idle Developer_ 🚀`,
   logger.info("🌙 Night Mode scheduler started.");
 
   cron.schedule("0 0 * * *", async () => {
-  // Night Mode code
-}, {
-  timezone: "Africa/Lagos"
-});
-    logger.info("🌙 Night Mode test cron triggered.");
+  logger.info("🌙 Night Mode triggered.");
 
-    for (const groupId of nightModeGroups) {
-      try {
-        // Send the Night Mode announcement
-        await sock.sendMessage(groupId, {
-          text: `╭━━━〔 🌙 NIGHT MODE 〕━━━╮
+  for (const groupId of nightModeGroups) {
+    try {
+      // Send the Night Mode announcement
+      await sock.sendMessage(groupId, {
+        text: `╭━━━〔 🌙 NIGHT MODE 〕━━━╮
 
 ⚠️ *Good night everyone!*
 
@@ -1670,22 +1666,22 @@ _Powered by The Idle Developer_ 🚀`,
 🤖 *Automated by SILVER BOT*
 
 ╰━━━━━━━━━━━━━━━━━━━━━━╯`
-        });
+      });
 
-        // Close the group
-        await sock.groupSettingUpdate(groupId, "announcement");
+      // Close the group
+      await sock.groupSettingUpdate(groupId, "announcement");
 
-        logger.info({ groupId }, "Night Mode: Group closed");
-      } catch (err) {
-        logger.error(
-          { groupId, error: err.message },
-          "Night Mode close failed"
-        );
-      }
+      logger.info({ groupId }, "Night Mode: Group closed");
+    } catch (err) {
+      logger.error(
+        { groupId, error: err.message },
+        "Night Mode close failed"
+      );
     }
-  });
-
-}
+  }
+}, {
+  timezone: "Africa/Lagos"
+});
 
     // TEST: Runs every minute (Morning Mode)
 cron.schedule("* * * * *", async () => {
