@@ -1646,8 +1646,11 @@ _Powered by The Idle Developer_ 🚀`,
 
   logger.info("🌙 Night Mode scheduler started.");
 
-  // TEST: Runs every minute
-  cron.schedule("* * * * *", async () => {
+  cron.schedule("0 0 * * *", async () => {
+  // Night Mode code
+}, {
+  timezone: "Africa/Lagos"
+});
     logger.info("🌙 Night Mode test cron triggered.");
 
     for (const groupId of nightModeGroups) {
