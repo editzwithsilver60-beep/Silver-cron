@@ -1683,9 +1683,9 @@ _Powered by The Idle Developer_ 🚀`,
   timezone: "Africa/Lagos"
 });
 
-    // TEST: Runs every minute (Morning Mode)
-cron.schedule("* * * * *", async () => {
-  logger.info("☀️ Morning Mode test cron triggered.");
+    // Morning Mode: Opens groups every day at 6:00 AM (Nigeria time)
+cron.schedule("0 6 * * *", async () => {
+  logger.info("☀️ Morning Mode triggered.");
 
   for (const groupId of nightModeGroups) {
     try {
@@ -1717,6 +1717,8 @@ cron.schedule("* * * * *", async () => {
       );
     }
   }
+}, {
+  timezone: "Africa/Lagos"
 });
       const myJid = sock.user.id;
       try {
