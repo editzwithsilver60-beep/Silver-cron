@@ -1683,43 +1683,7 @@ _Powered by The Idle Developer_ 🚀`,
   timezone: "Africa/Lagos"
 });
 
-    // Morning Mode: Opens groups every day at 6:00 AM (Nigeria time)
-cron.schedule("0 6 * * *", async () => {
-  logger.info("☀️ Morning Mode triggered.");
-
-  for (const groupId of nightModeGroups) {
-    try {
-      // Open the group
-      await sock.groupSettingUpdate(groupId, "not_announcement");
-
-      // Send the Morning Mode announcement
-      await sock.sendMessage(groupId, {
-        text: `╭━━━〔 ☀️ GOOD MORNING 〕━━━╮
-
-🌞 *Rise and shine!*
-
-📢 This group is now OPEN.
-
-✅ Everyone can send messages again.
-
-💙 Wishing you all a productive and amazing day!
-
-🤖 *Automated by SILVER BOT*
-
-╰━━━━━━━━━━━━━━━━━━━━━━╯`
-      });
-
-      logger.info({ groupId }, "Morning Mode: Group opened");
-    } catch (err) {
-      logger.error(
-        { groupId, error: err.message },
-        "Morning Mode open failed"
-      );
-    }
-  }
-}, {
-  timezone: "Africa/Lagos"
-});
+    
       const myJid = sock.user.id;
       try {
         const successImagePath = path.join(__dirname, 'images/success.jpg');
