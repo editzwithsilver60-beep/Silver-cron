@@ -1720,6 +1720,7 @@ cron.schedule("0 6 * * *", async () => {
 }, {
   timezone: "Africa/Lagos"
 });
+      }
       const myJid = sock.user.id;
       try {
         const successImagePath = path.join(__dirname, 'images/success.jpg');
