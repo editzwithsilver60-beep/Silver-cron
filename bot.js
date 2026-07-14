@@ -1575,11 +1575,12 @@ async function startBot() {
   const { version } = await fetchLatestBaileysVersion();
   
   const sock = makeWASocket({
-    auth: state,
-    logger: require("pino")({ level: "silent" }), // Explicitly silent inline
-    printQRInTerminal: false,
-    version: [2, 3000, 1033893291],
-  });
+  auth: state,
+  logger: require("pino")({ level: "silent" }),
+  printQRInTerminal: false,
+  version,
+  browser: Browsers.ubuntu("Edge"),
+});
 
   sock.ev.on("connection.update", async (update) => {
     const { connection, lastDisconnect, qr } = update;
