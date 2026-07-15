@@ -1670,7 +1670,7 @@ _Powered by The Idle Developer_ 🚀`,
       });
 
       // Close the group
-      await sock.groupSettingUpdate(groupId, "announcement");
+      await currentSock.groupSettingUpdate(groupId, "announcement");
 
       logger.info({ groupId }, "Night Mode: Group closed");
     } catch (err) {
