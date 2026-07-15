@@ -3986,9 +3986,9 @@ if (command === "vv" && canUseBot) {
     return;
   }
 
-  const option = args[0]?.toLowerCase();
+const option = args[0]?.toLowerCase();
 
-  if (option === "on") {
+if (option === "on") {
   if (!nightModeGroups.includes(message.key.remoteJid)) {
     nightModeGroups.push(message.key.remoteJid);
     saveData();
@@ -4006,28 +4006,25 @@ if (command === "vv" && canUseBot) {
   return;
 }
 
-  if (option === "off") {
-    const index = nightModeGroups.indexOf(message.key.remoteJid);
+if (option === "off") {
+  const index = nightModeGroups.indexOf(message.key.remoteJid);
 
-    if (index !== -1) {
-      nightModeGroups.splice(index, 1);
-      saveData();
-    }
+  if (index !== -1) {
+    nightModeGroups.splice(index, 1);
+    saveData();
 
-    await sock.sendMessage(message.key.remoteJid, {
-      text: "☀️ Night Mode disabled for this group.",
-    });
-
-    return;
+    logger.info(
+      { groups: nightModeGroups },
+      "Night Mode groups updated"
+    );
   }
 
   await sock.sendMessage(message.key.remoteJid, {
-    text: "Usage:\n.nightmode on\n.nightmode off",
+    text: "☀️ Night Mode disabled for this group.",
   });
 
   return;
 }
-
         if (command === "getpp") {
           let targetJid = null;
           
