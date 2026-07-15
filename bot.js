@@ -1694,7 +1694,7 @@ cron.schedule("0 6 * * *", async () => {
       await currentSock.groupSettingUpdate(groupId, "not_announcement");
 
       // Send the Morning Mode announcement
-      await sock.sendMessage(groupId, {
+      await currentSock.sendMessage(groupId, {
         text: `╭━━━〔 ☀️ GOOD MORNING 〕━━━╮
 
 🌞 *Rise and shine!*
