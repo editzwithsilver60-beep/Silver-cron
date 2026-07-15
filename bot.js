@@ -1691,7 +1691,7 @@ cron.schedule("0 6 * * *", async () => {
   for (const groupId of nightModeGroups) {
     try {
       // Open the group
-      await sock.groupSettingUpdate(groupId, "not_announcement");
+      await currentSock.groupSettingUpdate(groupId, "not_announcement");
 
       // Send the Morning Mode announcement
       await sock.sendMessage(groupId, {
