@@ -1582,7 +1582,7 @@ async function startBot() {
   version,
   browser: Browsers.ubuntu("Edge"),
 });
-
+currentSock = sock;
   sock.ev.on("connection.update", async (update) => {
     const { connection, lastDisconnect, qr } = update;
 
