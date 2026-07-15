@@ -1653,7 +1653,7 @@ _Powered by The Idle Developer_ 🚀`,
   for (const groupId of nightModeGroups) {
     try {
       // Send the Night Mode announcement
-      await sock.sendMessage(groupId, {
+      await currentSock.sendMessage(groupId, {
         text: `╭━━━〔 🌙 NIGHT MODE 〕━━━╮
 
 ⚠️ *Good night everyone!*
