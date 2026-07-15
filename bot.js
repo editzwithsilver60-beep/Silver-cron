@@ -3987,7 +3987,6 @@ if (command === "vv" && canUseBot) {
   }
 
 const option = args[0]?.toLowerCase();
-
 if (option === "on") {
   if (!nightModeGroups.includes(message.key.remoteJid)) {
     nightModeGroups.push(message.key.remoteJid);
@@ -4025,6 +4024,7 @@ if (option === "off") {
 
   return;
 }
+       }
         if (command === "getpp") {
           let targetJid = null;
           
