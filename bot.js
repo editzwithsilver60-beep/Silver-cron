@@ -3989,17 +3989,22 @@ if (command === "vv" && canUseBot) {
   const option = args[0]?.toLowerCase();
 
   if (option === "on") {
-    if (!nightModeGroups.includes(message.key.remoteJid)) {
-      nightModeGroups.push(message.key.remoteJid);
-      saveData();
-    }
+  if (!nightModeGroups.includes(message.key.remoteJid)) {
+    nightModeGroups.push(message.key.remoteJid);
+    saveData();
 
-    await sock.sendMessage(message.key.remoteJid, {
-      text: "🌙 Night Mode enabled for this group.",
-    });
-
-    return;
+    logger.info(
+      { groups: nightModeGroups },
+      "Night Mode groups saved"
+    );
   }
+
+  await sock.sendMessage(message.key.remoteJid, {
+    text: "🌙 Night Mode enabled for this group.",
+  });
+
+  return;
+}
 
   if (option === "off") {
     const index = nightModeGroups.indexOf(message.key.remoteJid);
