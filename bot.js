@@ -1634,7 +1634,7 @@ try {
 📌 Type *.menu* to see all available commands
 ━━━━━━━━━━━━━━━━━━━
 
-_Powered by The Idle Developer_ 🚀`,
+_Created by *SILVER*💫`,
       });
       console.log("   Connected Successfully!   ");
       console.log(`\nBot Owner: +${BOT_OWNER}`);
