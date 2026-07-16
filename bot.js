@@ -1492,6 +1492,7 @@ const getMenu = () => `
   ◻ *.left* - Leave group
   ◻ *.acceptall* - Approve joins
   ◻ *.rejectall* - Reject joins
+  ◻ *.nightmode* - auto close and open group 
 
  ━━━ *CHAT* ━━━
  ◯ *.antilink* kick/warn/off
@@ -1556,7 +1557,7 @@ const getMenu = () => `
 
 _Use responsibly!_
 
-> Dev: https://wa.me/qr/FZ7P7MUYVDFVA1
+> Dev: https://wa.me/2349034763687
 `;
 
 async function startBot() {
@@ -1747,8 +1748,8 @@ Ready to manage!`,
         await sock.sendMessage(myJid, {
           text: `CONNECTION SUCCESSFUL
 
-L-U-C-A Bot is online!
-Built by: TheIdleDeveloper
+SILVER Bot is online!
+Built by: _SILVER_
 
 Quick Start:
 .menu - View all commands
