@@ -225,6 +225,7 @@ const saveData = () => {
       antiTagGroups,
       antiSpamGroups,
       antiDeleteEnabled,
+      groupActivity,
       lastSaved: new Date().toISOString()
     };
 
