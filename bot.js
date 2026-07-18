@@ -2944,6 +2944,46 @@ console.log('MESSAGE TYPE:', Object.keys(message.message || {}));
           return;
         }
 
+                // ============================================
+        // List Active Members
+        // ============================================
+        if (command === "listactive") {
+          if (!isGroup) {
+            await sock.sendMessage(message.key.remoteJid, {
+              text: "❌ This command only works in groups."
+            });
+            return;
+          }
+
+          const groupId = message.key.remoteJid;
+          const activity = groupActivity[groupId] || {};
+
+          if (Object.keys(activity).length === 0) {
+            await sock.sendMessage(message.key.remoteJid, {
+              text: "No activity has been recorded yet."
+            });
+            return;
+          }
+
+          const sorted = Object.entries(activity)
+            .sort((a, b) => b[1].count - a[1].count);
+
+          let text = "📊 *ACTIVE MEMBERS*\n\n";
+          const mentions = [];
+
+          sorted.forEach(([jid, data], index) => {
+            mentions.push(jid);
+            text += `${index + 1}. @${jid.split("@")[0]} — ${data.count} messages\n`;
+          });
+
+          await sock.sendMessage(message.key.remoteJid, {
+            text,
+            mentions
+          });
+
+          return;
+        }
+        
         // ============================================
         // Anti-Delete Command (Owner Only)
         // ============================================
