@@ -196,6 +196,10 @@ if (data.nightModeGroups && Array.isArray(data.nightModeGroups)) {
         antiDeleteEnabled = data.antiDeleteEnabled;
       }
 
+      // Load group activity
+if (data.groupActivity) {
+  Object.assign(groupActivity, data.groupActivity);
+}
       logger.info('Bot data loaded successfully from JSON');
     } else {
       logger.info('No existing data file found, starting fresh');
