@@ -2200,6 +2200,34 @@ antiDelMsg += `🆔 *User:* ${senderNumber}\n`;
 
       if (!message.message) return;
 
+// ============================================
+// Activity Tracker
+// ============================================
+
+if (message.key.remoteJid.endsWith("@g.us") && !message.key.fromMe) {
+  const groupId = message.key.remoteJid;
+  const userId = message.key.participant;
+
+  if (!groupActivity[groupId]) {
+    groupActivity[groupId] = {};
+  }
+
+  if (!groupActivity[groupId][userId]) {
+    groupActivity[groupId][userId] = {
+      count: 0,
+      lastMessage: Date.now()
+    };
+  }
+
+  groupActivity[groupId][userId].count++;
+  groupActivity[groupId][userId].lastMessage = Date.now();
+
+  // Auto-save every 20 messages to reduce disk writes
+  if (groupActivity[groupId][userId].count % 20 === 0) {
+    saveData();
+  }
+}
+
       const isGroup = message.key.remoteJid.endsWith("@g.us");
       const isDM = !isGroup;
       let sender = message.key.participant || message.key.remoteJid;
