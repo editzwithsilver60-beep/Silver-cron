@@ -1834,6 +1834,18 @@ await currentSock.sendMessage(groupId, {
   timezone: "Africa/Lagos"
 });
 
+    // Weekly Champion - Every Sunday at 8:00 PM (Nigeria time)
+cron.schedule("0 20 * * 0", async () => {
+
+  logger.info("🏆 Weekly Champion started.");
+
+  // Champion code goes here
+
+  logger.info("✅ Weekly Champion completed.");
+
+}, {
+  timezone: "Africa/Lagos"
+});
     logger.info("📊 Weekly Activity Reset started.");
 
     for (const groupId in groupActivity) {
