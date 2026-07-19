@@ -75,6 +75,7 @@ const afkUsers = {}; // { jid: { reason, time } }
 
 const groupActivity = {}; // { groupId: { userId: { count, lastMessage } } }
 
+const pendingKickInactive = {};
 // Anti-mention Settings (for groups)
 const antiMentionGroups = {}; // { groupJid: true/false }
 
