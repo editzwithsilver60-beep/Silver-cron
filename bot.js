@@ -234,6 +234,39 @@ const saveData = () => {
       groupActivity,
       lastSaved: new Date().toISOString()
     };
+    async function getInactiveMembers(groupMetadata, groupActivityData, myJid, threshold = 50) {
+  const inactive = [];
+
+  for (const participant of groupMetadata.participants) {
+
+    // Skip admins
+    if (
+      participant.admin === "admin" ||
+      participant.admin === "superadmin"
+    ) continue;
+
+    // Skip bot
+    if (normalizeJid(participant.id) === normalizeJid(myJid))
+      continue;
+
+    const data = groupActivityData[participant.id] || {
+      count: 0,
+      lastMessage: null
+    };
+
+    if (data.count < threshold) {
+      inactive.push({
+        jid: participant.id,
+        count: data.count,
+        lastMessage: data.lastMessage
+      });
+    }
+  }
+
+  inactive.sort((a, b) => a.count - b.count);
+
+  return inactive;
+}
 
     fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2), 'utf8');
     logger.debug('Bot data saved to JSON');
