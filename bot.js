@@ -3016,6 +3016,77 @@ console.log('MESSAGE TYPE:', Object.keys(message.message || {}));
 
           return;
         }
+        // ============================================
+// Kick Inactive Members
+// ============================================
+if (command === "kickinactive") {
+
+  if (!isGroup) {
+    await sock.sendMessage(message.key.remoteJid, {
+      text: "❌ This command only works in groups."
+    });
+    return;
+  }
+
+  if (!isAdmin && !canUseAsOwner) {
+    await sock.sendMessage(message.key.remoteJid, {
+      text: "❌ Only admins can use this command."
+    });
+    return;
+  }
+
+  const threshold = Number(args[0]) || 50;
+
+  const groupMetadata = await sock.groupMetadata(message.key.remoteJid);
+
+  const inactive = await getInactiveMembers(
+    groupMetadata,
+    groupActivity[message.key.remoteJid] || {},
+    sock.user.id,
+    threshold
+  );
+
+  if (inactive.length === 0) {
+    await sock.sendMessage(message.key.remoteJid, {
+      text: "✅ No inactive members found."
+    });
+    return;
+  }
+
+  pendingKickInactive[message.key.remoteJid] = inactive;
+
+  let text =
+`⚠️ *Inactive Members Found*
+
+Threshold: ${threshold} messages
+
+`;
+
+  const mentions = [];
+
+  inactive.forEach((user, i) => {
+    mentions.push(user.jid);
+    text += `${i + 1}. @${user.jid.split("@")[0]} — ${user.count} messages\n`;
+  });
+
+  text +=
+`\nReply with:
+
+*.confirmkick*
+
+within 60 seconds to remove them.`;
+
+  await sock.sendMessage(message.key.remoteJid,{
+    text,
+    mentions
+  });
+
+  setTimeout(() => {
+    delete pendingKickInactive[message.key.remoteJid];
+  },60000);
+
+  return;
+}
 
                 // ============================================
         // Inactive Members
