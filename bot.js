@@ -1771,7 +1771,23 @@ cron.schedule("0 20 * * 5", async () => {
 
   for (const groupId in groupActivity) {
 
-  logger.info({ groupId }, "Checking group for inactive members.");
+  try {
+
+  const groupMetadata = await currentSock.groupMetadata(groupId);
+
+  logger.info({
+    group: groupMetadata.subject,
+    members: groupMetadata.participants.length
+  }, "Group loaded successfully.");
+
+} catch (err) {
+
+  logger.error(
+    { groupId, error: err.message },
+    "Failed to load group metadata."
+  );
+
+}
 
 }
 
