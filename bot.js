@@ -1764,6 +1764,18 @@ cron.schedule("0 6 * * *", async () => {
 });
         // Weekly Activity Reset - Every Monday at 12:00 AM (Nigeria time)
   cron.schedule("0 0 * * 1", async () => {
+    // Ghost Warning - Every Friday at 8:00 PM (Nigeria time)
+cron.schedule("0 20 * * 5", async () => {
+
+  logger.info("👻 Ghost Warning started.");
+
+  // We'll add the warning code here later.
+
+  logger.info("✅ Ghost Warning completed.");
+
+}, {
+  timezone: "Africa/Lagos"
+});
 
     logger.info("📊 Weekly Activity Reset started.");
 
