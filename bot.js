@@ -1769,7 +1769,11 @@ cron.schedule("0 20 * * 5", async () => {
 
   logger.info("👻 Ghost Warning started.");
 
-  // We'll add the warning code here later.
+  for (const groupId in groupActivity) {
+
+  logger.info({ groupId }, "Checking group for inactive members.");
+
+}
 
   logger.info("✅ Ghost Warning completed.");
 
