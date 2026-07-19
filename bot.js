@@ -1846,6 +1846,21 @@ cron.schedule("0 20 * * 0", async () => {
     const groupMetadata = await currentSock.groupMetadata(groupId);
 
     const activity = groupActivity[groupId] || {};
+    const highestCount = Math.max(
+  0,
+  ...Object.values(activity).map(user => user.count)
+);
+
+if (highestCount === 0) {
+  continue;
+}
+
+const champions = Object.entries(activity)
+  .filter(([_, data]) => data.count === highestCount)
+  .map(([jid, data]) => ({
+    jid,
+    count: data.count
+  }));
 
     logger.info({
       group: groupMetadata.subject,
