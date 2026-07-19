@@ -3089,6 +3089,67 @@ within 60 seconds to remove them.`;
   return;
 }
 
+        // ============================================
+// Confirm Kick Inactive Members
+// ============================================
+if (command === "confirmkick") {
+
+  if (!isGroup) {
+    await sock.sendMessage(message.key.remoteJid, {
+      text: "❌ This command only works in groups."
+    });
+    return;
+  }
+
+  if (!isAdmin && !canUseAsOwner) {
+    await sock.sendMessage(message.key.remoteJid, {
+      text: "❌ Only admins can use this command."
+    });
+    return;
+  }
+
+  const pending = pendingKickInactive[message.key.remoteJid];
+
+  if (!pending || pending.length === 0) {
+    await sock.sendMessage(message.key.remoteJid, {
+      text: "❌ There is no pending inactive member list.\n\nRun *.kickinactive* first."
+    });
+    return;
+  }
+
+  const users = pending.map(x => x.jid);
+
+  try {
+
+    await sock.groupParticipantsUpdate(
+      message.key.remoteJid,
+      users,
+      "remove"
+    );
+
+    let text = `🧹 *Removed ${users.length} inactive members*\n\n`;
+
+    pending.forEach((u, i) => {
+      text += `${i + 1}. @${u.jid.split("@")[0]} (${u.count} messages)\n`;
+    });
+
+    await sock.sendMessage(message.key.remoteJid, {
+      text,
+      mentions: users
+    });
+
+    delete pendingKickInactive[message.key.remoteJid];
+
+  } catch (err) {
+
+    await sock.sendMessage(message.key.remoteJid, {
+      text: `❌ Failed to remove members.\n\n${err.message}`
+    });
+
+  }
+
+  return;
+}
                 // ============================================
         // Inactive Members
         // ============================================
