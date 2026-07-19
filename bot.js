@@ -234,7 +234,14 @@ const saveData = () => {
       groupActivity,
       lastSaved: new Date().toISOString()
     };
-    async function getInactiveMembers(groupMetadata, groupActivityData, myJid, threshold = 50) {
+    
+    fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2), 'utf8');
+    logger.debug('Bot data saved to JSON');
+  } catch (error) {
+    logger.error({ error: error.message }, 'Error saving bot data');
+  }
+};
+async function getInactiveMembers(groupMetadata, groupActivityData, myJid, threshold = 50) {
   const inactive = [];
 
   for (const participant of groupMetadata.participants) {
@@ -267,14 +274,6 @@ const saveData = () => {
 
   return inactive;
 }
-
-    fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2), 'utf8');
-    logger.debug('Bot data saved to JSON');
-  } catch (error) {
-    logger.error({ error: error.message }, 'Error saving bot data');
-  }
-};
-
 // Auto-save data every 5 minutes
 setInterval(() => {
   saveData();
