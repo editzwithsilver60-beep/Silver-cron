@@ -1768,13 +1768,42 @@ cron.schedule("0 6 * * *", async () => {
     logger.info("📊 Weekly Activity Reset started.");
 
     for (const groupId in groupActivity) {
-      for (const userId in groupActivity[groupId]) {
 
-        // Reset only the message count
-        groupActivity[groupId][userId].count = 0;
+  for (const userId in groupActivity[groupId]) {
 
-      }
-    }
+    // Reset only the weekly message count
+    groupActivity[groupId][userId].count = 0;
+
+  }
+
+  try {
+
+    await currentSock.sendMessage(groupId, {
+      text: `╭━━━〔 📊 WEEKLY ACTIVITY RESET 〕━━━╮
+
+🎉 *A new activity week has begun!*
+
+💬 Everyone's weekly message count has been reset.
+
+🏆 Stay active this week to avoid being listed as inactive.
+
+🔥 Good luck everyone!
+
+🤖 *Automated by SILVER BOT*
+
+╰━━━━━━━━━━━━━━━━━━━━━━╯`
+    });
+
+  } catch (err) {
+
+    logger.error(
+      { groupId, error: err.message },
+      "Failed to send Weekly Activity Reset message"
+    );
+
+  }
+
+}
 
     saveData();
 
