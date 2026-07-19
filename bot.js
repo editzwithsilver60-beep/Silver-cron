@@ -3150,7 +3150,42 @@ if (command === "confirmkick") {
 
   return;
 }
-                // ============================================
+
+        // ============================================
+// Cancel Kick Inactive Members
+// ============================================
+if (command === "cancelkick") {
+
+  if (!isGroup) {
+    await sock.sendMessage(message.key.remoteJid, {
+      text: "❌ This command only works in groups."
+    });
+    return;
+  }
+
+  if (!isAdmin && !canUseAsOwner) {
+    await sock.sendMessage(message.key.remoteJid, {
+      text: "❌ Only admins can use this command."
+    });
+    return;
+  }
+
+  if (!pendingKickInactive[message.key.remoteJid]) {
+    await sock.sendMessage(message.key.remoteJid, {
+      text: "❌ There is no pending kick to cancel."
+    });
+    return;
+  }
+
+  delete pendingKickInactive[message.key.remoteJid];
+
+  await sock.sendMessage(message.key.remoteJid, {
+    text: "✅ Inactive member removal has been cancelled."
+  });
+
+  return;
+}
+      // ============================================
         // Inactive Members
         // ============================================
         if (command === "inactive") {
