@@ -1784,7 +1784,34 @@ cron.schedule("0 20 * * 5", async () => {
 if (inactive.length === 0) {
   continue;
 }
+const mentions = inactive.map(user => user.jid);
 
+let text = `╭━━━〔 👻 GHOST WARNING 〕━━━╮
+
+⚠️ *Inactive Members Detected*
+
+📉 Members with fewer than *50 messages* this week:
+
+`;
+
+inactive.forEach((user, index) => {
+  text += `${index + 1}. @${user.jid.split("@")[0]} — ${user.count} messages\n`;
+});
+
+text += `
+
+⏳ You have until *Sunday* to become active.
+
+💬 Start chatting now to avoid removal!
+
+🤖 *Automated by SILVER BOT*
+
+╰━━━━━━━━━━━━━━━━━━━━━━╯`;
+
+await currentSock.sendMessage(groupId, {
+  text,
+  mentions
+});
   logger.info({
     group: groupMetadata.subject,
     members: groupMetadata.participants.length
