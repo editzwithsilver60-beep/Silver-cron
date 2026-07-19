@@ -1763,7 +1763,7 @@ cron.schedule("0 6 * * *", async () => {
   timezone: "Africa/Lagos"
 });
         // Weekly Activity Reset - Every Monday at 12:00 AM (Nigeria time)
-  cron.schedule("0 0 * * 1", () => {
+  cron.schedule("0 0 * * 1", async () => {
 
     logger.info("📊 Weekly Activity Reset started.");
 
