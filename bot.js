@@ -3038,6 +3038,72 @@ if (command === "kickinactive") {
   const threshold = Number(args[0]) || 50;
 
   const groupMetadata = await sock.groupMetadata(message.key.remoteJid);
+  const activity = groupActivity[message.key.remoteJid] || {};
+
+  const inactive = await getInactiveMembers(
+    groupMetadata,
+    activity,
+    sock.user.id,
+    threshold
+  );
+
+  if (!inactive.length) {
+    await sock.sendMessage(message.key.remoteJid, {
+      text: `✅ Nobody has fewer than ${threshold} messages.`
+    });
+    return;
+  }
+
+  const users = inactive.map(x => x.jid);
+
+  try {
+    await sock.groupParticipantsUpdate(
+      message.key.remoteJid,
+      users,
+      "remove"
+    );
+
+    let txt = `🧹 Removed ${users.length} inactive members.\n\n`;
+
+    inactive.forEach((u, i) => {
+      txt += `${i + 1}. @${u.jid.split("@")[0]} (${u.count} msgs)\n`;
+    });
+
+    await sock.sendMessage(message.key.remoteJid, {
+      text: txt,
+      mentions: users
+    });
+
+  } catch (err) {
+    await sock.sendMessage(message.key.remoteJid, {
+      text: `❌ Failed to remove members.\n\n${err.message}`
+    });
+  }
+
+  return;
+}
+        // ============================================
+// Kick Inactive Members
+// ============================================
+if (command === "kickinactive") {
+
+  if (!isGroup) {
+    await sock.sendMessage(message.key.remoteJid, {
+      text: "❌ This command only works in groups."
+    });
+    return;
+  }
+
+  if (!isAdmin && !canUseAsOwner) {
+    await sock.sendMessage(message.key.remoteJid, {
+      text: "❌ Only admins can use this command."
+    });
+    return;
+  }
+
+  const threshold = Number(args[0]) || 50;
+
+  const groupMetadata = await sock.groupMetadata(message.key.remoteJid);
 
   const inactive = await getInactiveMembers(
     groupMetadata,
