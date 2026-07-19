@@ -1862,10 +1862,46 @@ const champions = Object.entries(activity)
     count: data.count
   }));
 
-    logger.info({
-      group: groupMetadata.subject,
-      trackedMembers: Object.keys(activity).length
-    }, "Calculating Weekly Champion.");
+    const mentions = champions.map(user => user.jid);
+
+let text = `╭━━━〔 🏆 WEEKLY CHAMPION 〕━━━╮
+
+🎉 *Congratulations!*
+
+`;
+
+if (champions.length === 1) {
+
+  text += `👑 This week's champion is:
+
+🥇 @${champions[0].jid.split("@")[0]}
+
+💬 Messages: ${champions[0].count}
+
+🔥 Amazing work! Keep defending your title!
+
+`;
+
+} else {
+
+  text += `👑 We have *${champions.length} Co-Champions!*\n\n`;
+
+  champions.forEach((user, index) => {
+    text += `🥇 ${index + 1}. @${user.jid.split("@")[0]} — ${user.count} messages\n`;
+  });
+
+  text += `\n🤝 Incredible! It's a tie at the top!\n\n`;
+
+}
+
+text += `🤖 *Automated by SILVER BOT*
+
+╰━━━━━━━━━━━━━━━━━━━━━━╯`;
+
+await currentSock.sendMessage(groupId, {
+  text,
+  mentions
+});
 
   } catch (err) {
 
