@@ -3054,7 +3054,34 @@ if (command === "kickinactive") {
     return;
   }
 
-  
+  const users = inactive.map(x => x.jid);
+
+  try {
+    await sock.groupParticipantsUpdate(
+      message.key.remoteJid,
+      users,
+      "remove"
+    );
+
+    let txt = `🧹 Removed ${users.length} inactive members.\n\n`;
+
+    inactive.forEach((u, i) => {
+      txt += `${i + 1}. @${u.jid.split("@")[0]} (${u.count} msgs)\n`;
+    });
+
+    await sock.sendMessage(message.key.remoteJid, {
+      text: txt,
+      mentions: users
+    });
+
+  } catch (err) {
+    await sock.sendMessage(message.key.remoteJid, {
+      text: `❌ Failed to remove members.\n\n${err.message}`
+    });
+  }
+
+  return;
+}
         // ============================================
 // Kick Inactive Members
 // ============================================
