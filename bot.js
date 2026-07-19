@@ -1762,6 +1762,27 @@ cron.schedule("0 6 * * *", async () => {
 }, {
   timezone: "Africa/Lagos"
 });
+        // Weekly Activity Reset - Every Monday at 12:00 AM (Nigeria time)
+  cron.schedule("0 0 * * 1", () => {
+
+    logger.info("📊 Weekly Activity Reset started.");
+
+    for (const groupId in groupActivity) {
+      for (const userId in groupActivity[groupId]) {
+
+        // Reset only the message count
+        groupActivity[groupId][userId].count = 0;
+
+      }
+    }
+
+    saveData();
+
+    logger.info("✅ Weekly Activity Reset completed.");
+
+  }, {
+    timezone: "Africa/Lagos"
+  });
       }
       const myJid = sock.user.id;
       try {
