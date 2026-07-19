@@ -1878,7 +1878,9 @@ if (champions.length === 1) {
 
 💬 Messages: ${champions[0].count}
 
-🔥 Amazing work! Keep defending your title!
+🏅 Congratulations on becoming this week's most active member!
+
+Will you defend your crown next week? 👑
 
 `;
 
