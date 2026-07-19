@@ -1509,96 +1509,125 @@ const formatUptime = () => {
 };
 
 const getMenu = () => `
- *$ILVER-BOT* 👻
- Made by SILVER 
+╭──────────────────────────╮
+│      👻 *SILVER BOT* 👻
+│   「 Community Manager 」
+╰──────────────────────────╯
 
-┌─────────────────────
-│ ◌ Owner: ${BOT_OWNER || 'Unknown'}
-│ ◌ Uptime: ${formatUptime()}
-│ ◌ Mode: ${botMode.toUpperCase()}
-│ ◌ Version: 1.0.0
-└─────────────────────
- 
-  ━━━ *GROUP* ━━━
-  ◻ *.lock* - Lock (.mute/.close)
-  ◻ *.open* - Unlock (.unmute)  
-  ◻ *.kick* - Kick user
-  ◻ *.warn* - Warn user (3=kick)
-  ◻ *.unwarn* - Remove warning
-  ◻ *.promote* - Make admin
-  ◻ *.demote* - Remove admin
-  ◻ *.block* - Block user
-  ◻ *.unblock* - Unblock user
-  ◻ *.left* - Leave group
-  ◻ *.acceptall* - Approve joins
-  ◻ *.rejectall* - Reject joins
-  ◻ *.nightmode* - auto close and open group 
+┏━━━━━━━━━━━━━━━━━━━━━┓
+┃ 👑 Owner   : ${BOT_OWNER || 'Unknown'}
+┃ ⏱ Uptime  : ${formatUptime()}
+┃ 🌐 Mode    : ${botMode.toUpperCase()}
+┃ 🚀 Version : 2.0.0
+┗━━━━━━━━━━━━━━━━━━━━━┛
 
- ━━━ *CHAT* ━━━
- ◯ *.antilink* kick/warn/off
- ◯ *.antiphoto* kick/warn/off
- ◯ *.antistatus* kick/warn/off
- ◯ *.antitag* kick/warn/off
- ◯ *.antispam* kick/warn/off
- ◯ *.tagall* - Tag all (.t/.tag)
- ◯ *.hidetag* [msg] - Tag all
- ◯ *.add* [number]
- ◯ *.welcome* on/off
- ◯ *.goodbye* on/off
- ◯ *.setwelcome* [msg]
- ◯ *.resetwelcome*
- ◯ *.setgoodbye* [msg]
- ◯ *.resetgoodbye*
+╔════『 👥 GROUP 』════╗
+┃ 🔒 .lock
+┃ 🔓 .open
+┃ 👢 .kick
+┃ ⚠️ .warn
+┃ ♻️ .unwarn
+┃ ⬆️ .promote
+┃ ⬇️ .demote
+┃ 🚫 .block
+┃ ✅ .unblock
+┃ 🚪 .left
+┃ 📥 .acceptall
+┃ ❌ .rejectall
+┃ 🌙 .nightmode on|off
+╚════════════════════╝
 
- ━━━ *GAMES* ━━━
- ⨷ *.anonymous* - Anon chat
- ⨷ *.rtw* - Rearrange words
- ⨷ *.wcg* - Word chain game
- ⨷ *.wcgstat* - WCG stats
- ⨷ *.400q* - 400 Questions (DM)
- ⨷ *.end* - End any game
+╔══『 🏆 MEMBER MANAGEMENT 』══╗
+┃ 📊 .listactive 
+┃ 👻 .inactive
+┃ 🦵 .kickinactive (threshold; default:50)
+┃ ✅ .confirmkick
+┃ ❌ .cancelkick
+╚════════════════════════╝
 
-━━━ *STICKERS* ━━━
-⪾ *.sticker* - Image/video
-⪾ *.setsticker* [cmd]
-   _save, vv, kick, lock_
+╔════『 💬 CHAT 』════╗
+┃ 🔗 .antilink
+┃ 🖼 .antiphoto
+┃ 📢 .antistatus
+┃ 🏷 .antitag
+┃ 🚫 .antispam
+┃ 👥 .tagall
+┃ 👤 .hidetag
+┃ ➕ .add
+┃ 👋 .welcome
+┃ 👋 .goodbye
+┃ ✍️ .setwelcome
+┃ ♻️ .resetwelcome
+┃ ✍️ .setgoodbye
+┃ ♻️ .resetgoodbye
+╚════════════════════╝
 
-━━━ *UTILITIES* ━━━
-◌ *.vv* - Save view-once
-◌ *.save* - Status to DM
-◌ *.getpp* - Profile pic
-◌ *.play* - Download music
-◌ *.ping* - Bot status
-◌ *.delete* - Delete msg
-◌ *.vcf* - Export contacts
-◌ *.tr* [lang] - Translate
-◌ *.afk* [reason] - Set AFK
-◌ *.back* - Return from AFK
-◌ *.toimg* - Sticker to image
-◌ *.tomp3* - Video/audio to MP3
+╔════『 🎮 GAMES 』════╗
+┃ 🎭 .anonymous
+┃ 🔤 .rtw
+┃ 🔗 .wcg
+┃ 📈 .wcgstat
+┃ ❓ .400q
+┃ ⛔ .end
+╚════════════════════╝
 
-━━━ *DOWNLOADERS* ━━━
-◯ *.tt* [url] - TikTok video
+╔════『 🎨 STICKERS 』════╗
+┃ 🖼 .sticker
+┃ ⭐ .setsticker
+╚════════════════════╝
 
-━━━ *CRYPTO* ━━━
-⨷ *.live* [coin]
-   _btc, eth, sol, ton..._
+╔════『 🛠 UTILITIES 』════╗
+┃ 👁 .vv
+┃ 💾 .save
+┃ 👤 .getpp
+┃ 🎵 .play
+┃ 🏓 .ping
+┃ 🗑 .delete
+┃ 📇 .vcf
+┃ 🌍 .tr
+┃ 😴 .afk
+┃ 😊 .back
+┃ 🖼 .toimg
+┃ 🎧 .tomp3
+╚════════════════════╝
 
-━━━ *SETTINGS* ━━━
-◻ *.public* - All users
-◻ *.private* - Owner only
-◻ *.antidel* on/off - Anti-delete
-◻ *.sudo* - Add sudo user
-◻ *.delsudo* - Remove sudo
-◻ *.listsudo* - List sudos
-◻ *.menu* - This menu
-◻ *.help* - Bot info
-◻ *.join* [link] - Join grp
+╔════『 📥 DOWNLOADS 』════╗
+┃ 🎵 .tt
+╚════════════════════╝
 
-_Use responsibly!_
+╔════『 💰 CRYPTO 』════╗
+┃ 📈 .live
+╚════════════════════╝
 
-> Dev: https://wa.me/2349034763687
+╔════『 ⚙ SETTINGS 』════╗
+┃ 🌍 .public
+┃ 🔒 .private
+┃ 🛡 .antidel
+┃ 👑 .sudo
+┃ ❌ .delsudo
+┃ 📜 .listsudo
+┃ ➕ .join
+┃ 📖 .menu
+┃ ❔ .help
+╚════════════════════╝
+
+╭──────────────────────────╮
+│ 🤖 *AUTOMATIC FEATURES*
+│
+│ 🌙 Night Mode
+│ ☀️ Morning Mode
+│ 📊 Weekly Activity Reset
+│ 👻 Ghost Warning
+│ 🏆 Weekly Champion
+╰──────────────────────────╯
+
+╭──────────────────────────╮
+│ ⚡ SILVER BOT • v2.0.0
+│ ❤️ Built by SILVER
+│ 📞 wa.me/2349034763687
+╰──────────────────────────╯
 `;
+
 
 async function startBot() {
   // Load saved data on startup
