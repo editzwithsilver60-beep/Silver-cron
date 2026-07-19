@@ -1896,7 +1896,12 @@ Will you defend your crown next week? 👑
 
 }
 
-text += `🤖 *Automated by SILVER BOT*
+text += `━━━━━━━━━━━━━━━━━━━━
+
+📅 Next Championship:
+Next Sunday • 8:00 PM
+
+🤖 *Automated by SILVER BOT*
 
 ╰━━━━━━━━━━━━━━━━━━━━━━╯`;
 
