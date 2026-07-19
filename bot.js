@@ -1839,7 +1839,29 @@ cron.schedule("0 20 * * 0", async () => {
 
   logger.info("🏆 Weekly Champion started.");
 
-  // Champion code goes here
+  for (const groupId in groupActivity) {
+
+  try {
+
+    const groupMetadata = await currentSock.groupMetadata(groupId);
+
+    const activity = groupActivity[groupId] || {};
+
+    logger.info({
+      group: groupMetadata.subject,
+      trackedMembers: Object.keys(activity).length
+    }, "Calculating Weekly Champion.");
+
+  } catch (err) {
+
+    logger.error(
+      { groupId, error: err.message },
+      "Weekly Champion failed."
+    );
+
+  }
+
+}
 
   logger.info("✅ Weekly Champion completed.");
 
