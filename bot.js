@@ -1774,6 +1774,16 @@ cron.schedule("0 20 * * 5", async () => {
   try {
 
   const groupMetadata = await currentSock.groupMetadata(groupId);
+    const inactive = await getInactiveMembers(
+  groupMetadata,
+  groupActivity[groupId],
+  myJid,
+  50
+);
+
+if (inactive.length === 0) {
+  continue;
+}
 
   logger.info({
     group: groupMetadata.subject,
