@@ -2983,7 +2983,102 @@ console.log('MESSAGE TYPE:', Object.keys(message.message || {}));
 
           return;
         }
-        
+
+                // ============================================
+        // Inactive Members
+        // ============================================
+        if (command === "inactive") {
+          if (!isGroup) {
+            await sock.sendMessage(message.key.remoteJid, {
+              text: "❌ This command only works in groups."
+            });
+            return;
+          }
+
+          const threshold = Number(args[0]) || 50;
+          const groupId = message.key.remoteJid;
+          const activity = groupActivity[groupId] || [];
+
+          const inactive = [];
+          const mentions = [];
+
+          function formatLastSeen(timestamp) {
+            if (!timestamp) return "Never";
+
+            const diff = Date.now() - timestamp;
+            const days = Math.floor(diff / 86400000);
+
+            if (days <= 0) return "Today";
+            if (days === 1) return "Yesterday";
+            if (days < 7) return `${days} days ago`;
+
+            const weeks = Math.floor(days / 7);
+
+            if (weeks === 1) return "1 week ago";
+
+            return `${weeks} weeks ago`;
+          }
+
+          for (const participant of groupMetadata.participants) {
+
+            // Skip admins
+            if (
+              participant.admin === "admin" ||
+              participant.admin === "superadmin"
+            ) continue;
+
+            // Skip bot
+            if (normalizeJid(participant.id) === normalizeJid(myJid))
+              continue;
+
+            const data = activity[participant.id] || {
+              count: 0,
+              lastMessage: null
+            };
+
+            if (data.count < threshold) {
+              inactive.push({
+                jid: participant.id,
+                count: data.count,
+                lastMessage: data.lastMessage
+              });
+            }
+          }
+
+          inactive.sort((a, b) => a.count - b.count);
+
+          if (inactive.length === 0) {
+            await sock.sendMessage(message.key.remoteJid, {
+              text: `✅ No inactive members found.\n\nThreshold: ${threshold} messages`
+            });
+            return;
+          }
+
+          let text =
+`👻 *INACTIVE MEMBERS*\n\n📌 Threshold: *${threshold} messages*\n\n`;
+
+          inactive.forEach((user, index) => {
+
+            mentions.push(user.jid);
+
+            text +=
+`${index + 1}. @${user.jid.split("@")[0]}
+💬 Messages: ${user.count}
+🕒 Last Seen: ${formatLastSeen(user.lastMessage)}
+
+`;
+          });
+
+          text += `━━━━━━━━━━━━━━
+👥 Total Inactive: ${inactive.length}`;
+
+          await sock.sendMessage(message.key.remoteJid, {
+            text,
+            mentions
+          });
+
+          return;
+        }
         // ============================================
         // Anti-Delete Command (Owner Only)
         // ============================================
