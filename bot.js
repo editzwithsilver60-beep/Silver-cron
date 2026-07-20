@@ -3231,6 +3231,48 @@ console.log('MESSAGE TYPE:', Object.keys(message.message || {}));
 
   return;
         }
+        if (command === "setprefix") {
+
+  if (!isOwner) {
+    await sock.sendMessage(message.key.remoteJid, {
+      text: "❌ Only the bot owner can change the prefix."
+    });
+    return;
+  }
+
+  const newPrefix = args[0];
+
+  if (!newPrefix) {
+    await sock.sendMessage(message.key.remoteJid, {
+      text: `Usage:\n\n${PREFIX}setprefix !`
+    });
+    return;
+  }
+
+  const oldPrefix = PREFIX;
+
+  PREFIX = newPrefix;
+
+  saveData();
+
+  await sock.sendMessage(message.key.remoteJid, {
+    text: `╭━━━〔 ⚙ PREFIX UPDATED 〕━━━╮
+
+✅ Prefix changed successfully!
+
+Old Prefix: ${oldPrefix}
+
+New Prefix: ${PREFIX}
+
+📌 Use ${PREFIX}menu from now on.
+
+🤖 SILVER BOT
+
+╰━━━━━━━━━━━━━━━━━━━━━━╯`
+  });
+
+  return;
+        }
 
         if (command === "ping") {
           const now = Date.now();
