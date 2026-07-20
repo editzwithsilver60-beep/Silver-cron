@@ -2636,7 +2636,7 @@ if (message.key.remoteJid.endsWith("@g.us") && !message.key.fromMe) {
       // Check if this is a sticker message (needs to bypass command check)
       const hasStickerMessage = !!message.message?.stickerMessage;
       
-      if (!fullCommand || !fullCommand.startsWith(".")) {
+      if (!fullCommand || !fullCommand.startsWith(PREFIX)) {
         // Not a command, but check for game interactions OR sticker messages
         if (hasStickerMessage) {
           // Sticker message - DON'T return, continue to sticker detection below
