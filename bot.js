@@ -3274,6 +3274,35 @@ New Prefix: ${PREFIX}
 
   return;
         }
+        if (command === "resetprefix") {
+
+  if (!isOwner) {
+    await sock.sendMessage(message.key.remoteJid, {
+      text: "❌ Only the bot owner can reset the prefix."
+    });
+    return;
+  }
+
+  PREFIX = ".";
+
+  saveData();
+
+  await sock.sendMessage(message.key.remoteJid, {
+    text: `╭━━━〔 ⚙ PREFIX RESET 〕━━━╮
+
+✅ Prefix has been reset!
+
+Current Prefix: ${PREFIX}
+
+📌 Use ${PREFIX}menu from now on.
+
+🤖 SILVER BOT
+
+╰━━━━━━━━━━━━━━━━━━━━━━╯`
+  });
+
+  return;
+}
 
         if (command === "ping") {
           const now = Date.now();
@@ -6101,6 +6130,35 @@ if (command === "setprefix") {
 Old Prefix: ${oldPrefix}
 
 New Prefix: ${PREFIX}
+
+📌 Use ${PREFIX}menu from now on.
+
+🤖 SILVER BOT
+
+╰━━━━━━━━━━━━━━━━━━━━━━╯`
+  });
+
+  return;
+}
+        if (command === "resetprefix") {
+
+  if (!isOwner) {
+    await sock.sendMessage(message.key.remoteJid, {
+      text: "❌ Only the bot owner can reset the prefix."
+    });
+    return;
+  }
+
+  PREFIX = ".";
+
+  saveData();
+
+  await sock.sendMessage(message.key.remoteJid, {
+    text: `╭━━━〔 ⚙ PREFIX RESET 〕━━━╮
+
+✅ Prefix has been reset!
+
+Current Prefix: ${PREFIX}
 
 📌 Use ${PREFIX}menu from now on.
 
