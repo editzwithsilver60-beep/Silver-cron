@@ -221,6 +221,7 @@ const saveData = () => {
   try {
     const data = {
       botOwner: BOT_OWNER,
+      prefix: PREFIX,
       customWelcomeMessages,
       customGoodbyeMessages,
       welcomeEnabled,
