@@ -3217,6 +3217,20 @@ console.log('MESSAGE TYPE:', Object.keys(message.message || {}));
           }
           return;
         }
+        if (command === "prefix") {
+
+  await sock.sendMessage(message.key.remoteJid, {
+    text: `╭━━━〔 ⚙ CURRENT PREFIX 〕━━━╮
+
+📌 Current Prefix: *${PREFIX}*
+
+🤖 SILVER BOT
+
+╰━━━━━━━━━━━━━━━━━━━━━━╯`
+  });
+
+  return;
+        }
 
         if (command === "ping") {
           const now = Date.now();
