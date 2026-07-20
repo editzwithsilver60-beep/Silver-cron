@@ -38,6 +38,7 @@ let nightModeGroups = [];
 let nightCronStarted = false;
 let currentSock = null;
 let botMode = "private";
+let PREFIX = ".";
 
 // Bot start time for uptime tracking
 const botStartTime = Date.now();
