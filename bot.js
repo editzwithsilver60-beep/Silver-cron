@@ -3184,7 +3184,7 @@ console.log('MESSAGE TYPE:', Object.keys(message.message || {}));
 
         // Silent return for non-authorized users in private mode
         // Allow ONLY owner/sudo to use commands when in private mode
-        if (text && text.startsWith(PREFIX)) {
+        if (!canUseBot && text && text.startsWith(PREFIX)) {
           logger.debug({ command, sender, botMode }, 'Non-owner attempted command in private mode - ignoring');
           return;
         }
