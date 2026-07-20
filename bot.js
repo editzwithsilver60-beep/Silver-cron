@@ -6012,6 +6012,20 @@ Longest Word: "${stats.longestWord.word || 'N/A'}" (${stats.longestWord.length |
           }
           return;
         }
+        if (command === "prefix") {
+
+  await sock.sendMessage(message.key.remoteJid, {
+    text: `╭━━━〔 ⚙ CURRENT PREFIX 〕━━━╮
+
+📌 Current Prefix: *${PREFIX}*
+
+🤖 SILVER BOT
+
+╰━━━━━━━━━━━━━━━━━━━━━━╯`
+  });
+
+  return;
+        }
 
         if (command === "help") {
           await sock.sendMessage(message.key.remoteJid, {
