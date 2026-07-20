@@ -3180,7 +3180,7 @@ console.log('MESSAGE TYPE:', Object.keys(message.message || {}));
 
         // Non-command group messages should return after anti-* enforcement
         // But allow sticker messages through for sticker command detection
-        if ((!text || !text.startsWith('.')) && !hasStickerMessage) return;
+        if ((!text || !text.startsWith(PREFIX)) && !hasStickerMessage) return;
 
         // Silent return for non-authorized users in private mode
         // Allow ONLY owner/sudo to use commands when in private mode
