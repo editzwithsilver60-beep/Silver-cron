@@ -2686,7 +2686,9 @@ if (message.key.remoteJid.endsWith("@g.us") && !message.key.fromMe) {
         }
       }
 
-      const command = fullCommand?.startsWith(".") ? fullCommand.slice(1) : (fullCommand || "");
+      const command = fullCommand?.startsWith(PREFIX)
+  ? fullCommand.slice(PREFIX.length)
+  : (fullCommand || "");
       const args = text?.trim().split(" ").slice(1) || [];
 
       // Ignore single dot or empty command - BUT allow sticker messages and group messages through (for anti-* enforcement)
