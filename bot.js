@@ -2758,7 +2758,7 @@ if (message.key.remoteJid.endsWith("@g.us") && !message.key.fromMe) {
         }
       }
 
-      if (text && text.startsWith(".")) {
+      if (text && text.startsWith(PREFIX)) {
         console.log('\n' + '='.repeat(60));
         console.log(`Command: ${command}`);
         console.log(`Sender: ${sender}`);
@@ -3184,7 +3184,7 @@ console.log('MESSAGE TYPE:', Object.keys(message.message || {}));
 
         // Silent return for non-authorized users in private mode
         // Allow ONLY owner/sudo to use commands when in private mode
-        if (!canUseBot && text && text.startsWith(".")) {
+        if (text && text.startsWith(PREFIX)) {
           logger.debug({ command, sender, botMode }, 'Non-owner attempted command in private mode - ignoring');
           return;
         }
@@ -6033,7 +6033,7 @@ Longest Word: "${stats.longestWord.word || 'N/A'}" (${stats.longestWord.length |
           return;
         }
 
-        if (text && text.startsWith(".")) {
+        if (text && text.startsWith(PREFIX)) {
           // Unknown command error
           await sock.sendMessage(message.key.remoteJid, {
             text: `❌ Unknown command. Type .menu for help.`,
@@ -7086,7 +7086,7 @@ _Use responsibly!_`,
           return;
         }
 
-        if (text && text.startsWith(".")) {
+        if (text && text.startsWith(PREFIX)) {
           // Unknown command error
           await sock.sendMessage(message.key.remoteJid, {
             text: `❌ Unknown command. Type .menu for help.`,
