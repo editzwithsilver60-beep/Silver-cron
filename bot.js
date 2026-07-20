@@ -116,6 +116,11 @@ const loadData = () => {
         logger.info({ owner: BOT_OWNER }, 'Bot owner loaded from saved data');
       }
 
+      // Load bot prefix
+if (data.prefix) {
+  PREFIX = data.prefix;
+  logger.info({ prefix: PREFIX }, "Bot prefix loaded from saved data");
+}
       // Load custom welcome messages
       if (data.customWelcomeMessages) {
         Object.assign(customWelcomeMessages, data.customWelcomeMessages);
