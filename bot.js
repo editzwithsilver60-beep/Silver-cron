@@ -6194,14 +6194,15 @@ Current Prefix: ${PREFIX}
 │                          │
 └──────────────────────────┘
 
-┌────── *HOW TO USE* ──────┐
+┌────── *HOW TO USE* ────
 │                          │
-│ 1. Type .menu for cmds   │
+│ 1. Type ${PREFIX}menu for│
+│   cmds.                  │
 │ 2. Reply to use actions  │
 │ 3. Stickers = quick cmds │
 │ 4. .public / .private    │
 │                          │
-└──────────────────────────┘
+└──────────────────────
 
 ⚡ *Current Mode:* ${botMode.toUpperCase()}
 
