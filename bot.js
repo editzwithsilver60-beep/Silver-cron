@@ -1704,7 +1704,7 @@ try {
 📌 Type *.menu* to see all available commands
 ━━━━━━━━━━━━━━━━━━━
 
-_Created by *SILVER*💫`,
+_BOT BY SILVER_`,
       });
       console.log("   Connected Successfully!   ");
       console.log(`\nBot Owner: +${BOT_OWNER}`);
