@@ -6036,7 +6036,7 @@ Longest Word: "${stats.longestWord.word || 'N/A'}" (${stats.longestWord.length |
         if (text && text.startsWith(PREFIX)) {
           // Unknown command error
           await sock.sendMessage(message.key.remoteJid, {
-            text: `❌ Unknown command. Type .menu for help.`,
+            text: `❌ Unknown command. Type ${PREFIX}menu for help.`,
           });
           return;
         }
@@ -7089,7 +7089,7 @@ _Use responsibly!_`,
         if (text && text.startsWith(PREFIX)) {
           // Unknown command error
           await sock.sendMessage(message.key.remoteJid, {
-            text: `❌ Unknown command. Type .menu for help.`,
+            text: `❌ Unknown command. Type ${PREFIX}menu for help.`,
           });
           return;
         }
