@@ -208,6 +208,9 @@ if (data.nightModeGroups && Array.isArray(data.nightModeGroups)) {
 if (data.groupActivity) {
   Object.assign(groupActivity, data.groupActivity);
 }
+      if (data.activityTracking) {
+  Object.assign(activityTracking, data.activityTracking);
+      }
       logger.info('Bot data loaded successfully from JSON');
     } else {
       logger.info('No existing data file found, starting fresh');
