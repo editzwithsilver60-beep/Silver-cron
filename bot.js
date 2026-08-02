@@ -244,6 +244,7 @@ const saveData = () => {
       antiSpamGroups,
       antiDeleteEnabled,
       groupActivity,
+      activityTracking,
       lastSaved: new Date().toISOString()
     };
     
