@@ -1694,7 +1694,7 @@ try {
       const ownerJid = normalizeJid(BOT_OWNER);
       await sock.sendMessage(ownerJid, {
         text: `╭━━━━━━━━━━━━━━━━━╮
-┃  🤖 *SILVER BOT v1.0* 👻
+┃  🤖 *SILVER BOT v2.0* 👻
 ╰━━━━━━━━━━━━━━━━━╯
 
 ✅ *Status:* Connected Successfully!
@@ -1703,10 +1703,10 @@ try {
 ⏰ *Time:* ${new Date().toLocaleString()}
 
 ━━━━━━━━━━━━━━━━━━━
-📌 Type *.menu* to see all available commands
+📌 Type *${prefix}menu* to see all available commands
 ━━━━━━━━━━━━━━━━━━━
 
-_BOT BY SILVER_`,
+💻 Powered by ᭄ 𝑆𝑖𝑙𝑣𝑒𝑟᭄ ✞`,
       });
       console.log("   Connected Successfully!   ");
       console.log(`\nBot Owner: +${BOT_OWNER}`);
