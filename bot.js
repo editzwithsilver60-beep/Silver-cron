@@ -4710,6 +4710,65 @@ if (option === "off") {
   return;
 }
        }
+        if (command === "trackactivity") {
+  if (!ownerIsAdmin) {
+    await sock.sendMessage(message.key.remoteJid, {
+      text: "❌ Bot needs admin.",
+    });
+    return;
+  }
+
+  const option = args[0]?.toLowerCase();
+  const groupId = message.key.remoteJid;
+
+  if (option === "on") {
+    activityTracking[groupId] = true;
+    saveData();
+
+    logger.info(
+      { groupId },
+      "Activity tracking enabled"
+    );
+
+    await sock.sendMessage(groupId, {
+      text: "📊 Activity tracking has been enabled for this group.",
+    });
+    return;
+  }
+
+  if (option === "off") {
+    delete activityTracking[groupId];
+    saveData();
+
+    logger.info(
+      { groupId },
+      "Activity tracking disabled"
+    );
+
+    await sock.sendMessage(groupId, {
+      text: "📊 Activity tracking has been disabled for this group.",
+    });
+    return;
+  }
+
+  if (option === "status") {
+    const enabled = !!activityTracking[groupId];
+
+    await sock.sendMessage(groupId, {
+      text: `📊 Activity Tracking: ${enabled ? "✅ Enabled" : "❌ Disabled"}`,
+    });
+    return;
+  }
+
+  await sock.sendMessage(groupId, {
+    text:
+      "📊 *Activity Tracking*\n\n" +
+      "`.trackactivity on` - Enable\n" +
+      "`.trackactivity off` - Disable\n" +
+      "`.trackactivity status` - Check status",
+  });
+  return;
+        }
         if (command === "getpp") {
           let targetJid = null;
           
