@@ -1973,6 +1973,7 @@ await currentSock.sendMessage(groupId, {
     logger.info("📊 Weekly Activity Reset started.");
 
     for (const groupId in groupActivity) {
+      if (!activityTracking[groupId]) continue;
 
   for (const userId in groupActivity[groupId]) {
 
