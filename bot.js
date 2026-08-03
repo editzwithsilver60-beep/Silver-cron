@@ -1623,7 +1623,7 @@ const getMenu = () => `
 ╭━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╮
 │      ✦ THANKS FOR USING SILVER ✦
 │
-│ ❤️ Crafted with precision by SILVER
+│ 💻 Powered by ᭄ 𝑆𝑖𝑙𝑣𝑒𝑟᭄ ✞
 │ 📞 wa.me/2349034763687
 │
 │ 「 Stay Sharp • Stay Silver 」
@@ -1703,7 +1703,7 @@ try {
 ⏰ *Time:* ${new Date().toLocaleString()}
 
 ━━━━━━━━━━━━━━━━━━━
-📌 Type *${prefix}menu* to see all available commands
+📌 Type ${prefix}menu  to see all available commands
 ━━━━━━━━━━━━━━━━━━━
 
 💻 Powered by ᭄ 𝑆𝑖𝑙𝑣𝑒𝑟᭄ ✞`,
