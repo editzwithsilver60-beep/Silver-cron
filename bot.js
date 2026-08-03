@@ -1812,6 +1812,7 @@ cron.schedule("0 20 * * 5", async () => {
   logger.info("👻 Ghost Warning started.");
 
   for (const groupId in groupActivity) {
+    if (!activityTracking[groupId]) continue;
 
   try {
 
