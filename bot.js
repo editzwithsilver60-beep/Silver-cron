@@ -1883,6 +1883,7 @@ cron.schedule("0 20 * * 0", async () => {
   logger.info("🏆 Weekly Champion started.");
 
   for (const groupId in groupActivity) {
+    if (!activityTracking[groupId]) continue;
 
   try {
 
