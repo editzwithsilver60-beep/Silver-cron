@@ -2909,8 +2909,24 @@ if (message.key.remoteJid.endsWith("@g.us") && !message.key.fromMe) {
         const antiPhotoAction = antiPhotoGroups[message.key.remoteJid];
         if (antiPhotoAction && !isAdmin && !canUseAsOwner && !message.key.fromMe) {
           // Check for view-once wrappers first — these should ALWAYS be allowed
-          const isViewOnce = !!message.message.viewOnceMessage || !!message.message.viewOnceMessageV2 || !!message.message.viewOnceMessageV2Extension;
-          
+          console.log("MESSAGE KEYS:", Object.keys(message.message || {}));
+
+console.log(
+  "IMAGE viewOnce:",
+  message.message?.imageMessage?.viewOnce
+);
+
+console.log(
+  "VIDEO viewOnce:",
+  message.message?.videoMessage?.viewOnce
+);
+
+const isViewOnce =
+  !!message.message?.viewOnceMessage ||
+  !!message.message?.viewOnceMessageV2 ||
+  !!message.message?.viewOnceMessageV2Extension ||
+  !!message.message?.imageMessage?.viewOnce ||
+  !!message.message?.videoMessage?.viewOnce;
           // Only check for direct (non-viewonce) images/videos
           const hasImage = !isViewOnce && !!message.message.imageMessage;
           const hasVideo = !isViewOnce && !!message.message.videoMessage;
