@@ -1703,9 +1703,8 @@ try {
 ⏰ *Time:* ${new Date().toLocaleString()}
 
 ━━━━━━━━━━━━━━━━━━━
-📌 Type ${prefix}menu  to see all available commands
+📌 Type ${PREFIX}menu to see all available commands
 ━━━━━━━━━━━━━━━━━━━
-
 💻 Powered by ᭄ 𝑆𝑖𝑙𝑣𝑒𝑟᭄ ✞`,
       });
       console.log("   Connected Successfully!   ");
