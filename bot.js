@@ -1521,124 +1521,113 @@ const formatUptime = () => {
 };
 
 const getMenu = () => `
-╭──────────────────────────╮
-│      👻 *SILVER BOT* 👻
-│   「 Community Manager 」
-╰──────────────────────────╯
+╭━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╮
+│        👻  S I L V E R   B O T  👻
+│      ◈ C Y B E R P U N K • U I ◈
+│       「 Community Manager 」
+╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯
 
-┏━━━━━━━━━━━━━━━━━━━━━┓
-┃ 👑 Owner   : ${BOT_OWNER || 'Unknown'}
-┃ ⏱ Uptime  : ${formatUptime()}
-┃ 🌐 Mode    : ${botMode.toUpperCase()}
-┃ 🚀 Version : 2.0.0
-┗━━━━━━━━━━━━━━━━━━━━━┛
-
-╔════『 👥 GROUP 』════╗
-┃ 🔒 .lock
-┃ 🔓 .open
-┃ 👢 .kick
-┃ ⚠️ .warn
-┃ ♻️ .unwarn
-┃ ⬆️ .promote
-┃ ⬇️ .demote
-┃ 🚫 .block
-┃ ✅ .unblock
-┃ 🚪 .left
-┃ 📥 .acceptall
-┃ ❌ .rejectall
-┃ 🌙 .nightmode on|off
-╚════════════════════╝
-
-╔══『 🏆 MEMBER MANAGEMENT 』══╗
-┃ 📊 .listactive 
-┃ 👻 .inactive
-┃ 🦵 .kickinactive (threshold; default:50)
-┃ ✅ .confirmkick
-┃ ❌ .cancelkick
-╚════════════════════════╝
-
-╔════『 💬 CHAT 』════╗
-┃ 🔗 .antilink
-┃ 🖼 .antiphoto
-┃ 📢 .antistatus
-┃ 🏷 .antitag
-┃ 🚫 .antispam
-┃ 👥 .tagall
-┃ 👤 .hidetag
-┃ ➕ .add
-┃ 👋 .welcome
-┃ 👋 .goodbye
-┃ ✍️ .setwelcome
-┃ ♻️ .resetwelcome
-┃ ✍️ .setgoodbye
-┃ ♻️ .resetgoodbye
-╚════════════════════╝
-
-╔════『 🎮 GAMES 』════╗
-┃ 🎭 .anonymous
-┃ 🔤 .rtw
-┃ 🔗 .wcg
-┃ 📈 .wcgstat
-┃ ❓ .400q
-┃ ⛔ .end
-╚════════════════════╝
-
-╔════『 🎨 STICKERS 』════╗
-┃ 🖼 .sticker
-┃ ⭐ .setsticker
-╚════════════════════╝
-
-╔════『 🛠 UTILITIES 』════╗
-┃ 👁 .vv
-┃ 💾 .save
-┃ 👤 .getpp
-┃ 🎵 .play
-┃ 🏓 .ping
-┃ 🗑 .delete
-┃ 📇 .vcf
-┃ 🌍 .tr
-┃ 😴 .afk
-┃ 😊 .back
-┃ 🖼 .toimg
-┃ 🎧 .tomp3
-╚════════════════════╝
-
-╔════『 📥 DOWNLOADS 』════╗
-┃ 🎵 .tt
-╚════════════════════╝
-
-╔════『 💰 CRYPTO 』════╗
-┃ 📈 .live
-╚════════════════════╝
-
-╔════『 ⚙ SETTINGS 』════╗
-┃ 🌍 .public
-┃ 🔒 .private
-┃ 🛡 .antidel
-┃ 👑 .sudo
-┃ ❌ .delsudo
-┃ 📜 .listsudo
-┃ ➕ .join
-┃ 📖 .menu
-┃ ❔ .help
-┃ ⚙️. setprefix 
-╚════════════════════╝
-
-╭──────────────────────────╮
-│ 🤖 *AUTOMATIC FEATURES*
+╭─〔 ⚡ SYSTEM STATUS 〕────────────────╮
+│ 👑 Owner    │ ${BOT_OWNER || 'Unknown'}
+│ 🌐 Mode     │ ${botMode.toUpperCase()}
+│ ⏱ Uptime    │ ${formatUptime()}
+│ 🚀 Version  │ v2.0.0
 │
-│ 🌙 Night Mode
-│ ☀️ Morning Mode
-│ 📊 Weekly Activity Reset
-│ 👻 Ghost Warning
-│ 🏆 Weekly Champion
-╰──────────────────────────╯
+│ 🟣 CPU    ▰▰▰▰▰▰▱▱▱ 70%
+│ 🔵 RAM    ▰▰▰▰▰▰▰▰▱ 90%
+│ 🟢 BOT    ▰▰▰▰▰▰▰▰▰ ONLINE
+╰──────────────────────────────────────╯
 
-╭──────────────────────────╮
-│ ⚡ SILVER BOT • v2.0.0
-│ ❤️ Built by SILVER
+╔══════════════ 👥 GROUP ══════════════╗
+║ 🔒 lock          🔓 open   
+║ 👢 kick          ⚠️ warn. 
+║ ♻️ unwarn        ⬆️ promote 
+║ ⬇️ demote        🚫 block
+║ ✅ unblock       🚪 left
+║ 📥 acceptall     ❌ rejectall
+║ 🌙 nightmode on|off 🏋️trackactivity status
+║ 🏋️👀trackactivity on|off                  
+╚══════════════════════════════════════╝
+
+╔════════ 🏆 MEMBER MANAGEMENT ════════╗
+║ 📊 listactive
+║ 👻 inactive
+║ 🦵 kickinactive
+║ ✅ confirmkick
+║ ❌ cancelkick
+╚══════════════════════════════════════╝
+
+╔══════════════ 💬 CHAT ═══════════════╗
+║ 🔗 antilink       🖼 antiphoto
+║ 📢 antistatus     🏷 antitag
+║ 🚫 antispam       👥 tagall
+║ 👤 hidetag        ➕ add
+║ 👋 welcome        👋 goodbye
+║ ✍️ setwelcome     ♻️ resetwelcome
+║ ✍️ setgoodbye     ♻️ resetgoodbye
+╚══════════════════════════════════════╝
+
+╔══════════════ 🎮 GAMES ══════════════╗
+║ 🎭 anonymous
+║ 🔤 rtw
+║ 🔗 wcg
+║ 📈 wcgstat
+║ ❓ 400q
+║ ⛔ end
+╚══════════════════════════════════════╝
+
+╔════════════ 🎨 STICKERS ═════════════╗
+║ 🖼 sticker
+║ ⭐ setsticker
+╚══════════════════════════════════════╝
+
+╔════════════ 🛠 UTILITIES ════════════╗
+║ 👁 vv            💾 save
+║ 👤 getpp         🎵 play
+║ 🏓 ping          🗑 delete
+║ 📇 vcf           🌍 tr
+║ 😴 afk           😊 back
+║ 🖼 toimg         🎧 tomp3
+╚══════════════════════════════════════╝
+
+╔═══════════ 📥 DOWNLOADS ═════════════╗
+║ 🎵 tt
+╚══════════════════════════════════════╝
+
+╔════════════ 💰 CRYPTO ═══════════════╗
+║ 📈 live
+╚══════════════════════════════════════╝
+
+╔════════════ ⚙ SETTINGS ═════════════╗
+║ 🌍 public        🔒 private
+║ 🛡 antidel       👑 sudo
+║ ❌ delsudo       📜 listsudo
+║ ➕ join          📖 menu
+║ ❔ help          ⚙️ setprefix 
+╚══════════════════════════════════════╝
+
+╭────────── 🤖 AUTO FEATURES ──────────╮
+│ 🌙 Night Mode          ● ACTIVE
+│ ☀️ Morning Mode        ● ACTIVE
+│ 📊 Weekly Reset        ● ACTIVE
+│ 👻 Ghost Warning       ● ACTIVE
+│ 🏆 Weekly Champion     ● ACTIVE
+╰──────────────────────────────────────╯
+
+╭───────────── ⚡ POWER CORE ───────────╮
+│ Neon Signal   ▰▰▰▰▰▰▰▰▰ 100%
+│ Security      ▰▰▰▰▰▰▰▰▱ 90%
+│ Performance   ▰▰▰▰▰▰▰▱▱ 80%
+╰──────────────────────────────────────╯
+
+╭━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╮
+│      ✦ THANKS FOR USING SILVER ✦
+│
+│ ❤️ Crafted with precision by SILVER
 │ 📞 wa.me/2349034763687
-╰──────────────────────────╯
+│
+│ 「 Stay Sharp • Stay Silver 」
+╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯
 `;
 
 
